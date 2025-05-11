@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr"> 
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Tropicalize Festival #7 17juillet 2025</title>
+
+    <!--  Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans|Permanent+Marker" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- FlipDown CSS (Chemin pour répertoire courant) -->
+    <link rel="stylesheet" href="css/flipdown/flipdown.css">
+
+    <!-- Your Custom Styles (Chemin pour répertoire courant) -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- FlipDown JavaScript (Chemin pour répertoire courant) -->
+    <script src="js/flipdown/flipdown.js"></script> <!-- type="text/javascript" enlevé -->
+
+    
+    <script src="js/main.js"></script> 
+
+  </head>
+  <body class="light-theme"> <!-- Ajout de la classe pour le thème clair -->
+
+    <!-- Conteneur Bootstrap pour centrer et gérer la largeur -->
+    <!-- Ajout des classes flex pour le centrage vertical -->
+    <div class="container d-flex flex-column justify-content-center min-vh-100 py-4">
+        <!-- Ligne Bootstrap -->
+        <div class="row">
+            <!-- Colonne Bootstrap (centrée, largeur définie) -->
+          
+            <div class="col-md-8 col-lg-7 mx-auto example">
+
+                <!-- Votre contenu -->
+                <h1>Tropicalize Festival#7</h1>
+                <p>🎶🎉🎶 Smile culture & solidarity🎶🎉🎶</p>
+
+                <!-- Le timer FlipDown sera inséré ici par le JS -->
+                <div id="flipdown" class="flipdown"></div>
+
+                
+                <!-- === DEEZER IFRAME === -->
+                <iframe title="deezer-widget"
+                        src="https://widget.deezer.com/widget/auto/playlist/13750040521"
+                        width="100%"
+                        height="300"
+                        frameborder="0"
+                        allowtransparency="true"
+                        allow="encrypted-media; clipboard-write"
+                        class="mt-4"> <!-- Ajout d'une marge en haut (mt-4) -->
+                </iframe>
+                
+                 <!-- === spotify IFRAME === -->
+                <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/6WatjJK4QbMxJ5AqOjSGa8?utm_source=generator"
+                width="100%"
+                height="352" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+                </iframe>       
+              
+                <!-- Contenu du pied de page (footer) -->
+                <div class="buttons mt-4">
+                    <p>Version: <span id="ver"></span> (&lt;11KB minified)</p>
+                    <!-- Bouton Bootstrap -->
+                    <a href="https://github.com/PButcher/flipdown#flipdown" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light mt-2">
+                        <i class="fab fa-github"></i> <span>Get started</span>
+                    </a>
+                </div>
+                <!-- Fin du contenu du pied de page -->
+
+            </div> <!-- Fin de la colonne .example -->
+        </div> <!-- Fin de la ligne -->
+    </div> <!-- Fin du conteneur -->
+
+    <!-- Optionnel : Bundle JS Bootstrap (si besoin de composants interactifs comme dropdowns, modals...) -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script> -->
+
+  </body>
+</html>
