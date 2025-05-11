@@ -1,0 +1,197 @@
+/* --- Animation pour le flou du fond --- */
+@keyframes unblurBackground {
+  from {
+    filter: blur(15px); /* Flou de départ (ajustez si besoin) */
+  }
+  to {
+    filter: blur(0px); /* Flou final (net) */
+  }
+}
+/* --- Fin Animation --- */
+
+html {
+  height: 100%;
+}
+
+/* --- Règle body principale --- */
+body {
+  /* Layout & Box Model */
+  min-height: 100vh; /* Prend au moins toute la hauteur de l'écran */
+  margin: 0; /* Enlève les marges par défaut */
+  /* Les display/justify/align sont gérés par le container Bootstrap dans le HTML */
+  padding: 0; /* Le padding est géré par le container Bootstrap */
+  box-sizing: border-box; /* Inclut padding dans la taille */
+
+  /* Typographie & Apparence */
+  font-family: 'Nunito Sans', sans-serif; /* Police par défaut pour le texte général */
+  color: white; /* Couleur de texte par défaut (pour lisibilité sur fond) */
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); /* Ombre pour lisibilité */
+
+  /* --- Modifications pour l'effet de flou sur ::before --- */
+  position: relative; /* Nécessaire pour positionner ::before */
+  background-color: transparent; /* Rend le fond du body transparent pour voir ::before */
+  /* PAS de background-image ou filter directement sur body */
+
+  /* Transitions (conservées) */
+  transition: all .2s ease-in-out;
+}
+/* --- Fin Règle body --- */
+
+/* --- Pseudo-élément pour le fond flou (la cible du flou) --- */
+body::before {
+  content: ""; /* Obligatoire pour afficher le pseudo-élément */
+  position: fixed; /* Couvre tout l'écran, reste fixe au scroll */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place DERRIÈRE le contenu du body */
+
+  /* --- Propriétés du fond --- */
+  /* !! VÉRIFIEZ CE CHEMIN !! Il doit être correct par rapport à style.css */
+  /* Si 'asset' est au même niveau que 'css', ce chemin est correct */
+  background-image: url('asset/splash.png');
+  background-size: cover; /* Couvre tout l'espace */
+  background-position: center center; /* Centre l'image */
+  background-repeat: no-repeat; /* Empêche la répétition */
+  background-attachment: fixed; /* L'image reste fixe lors du scroll */
+
+  /* --- Flou initial et animation APPLIQUÉS ICI UNIQUEMENT --- */
+  filter: blur(15px); /* Flou pourcentage) */
+  animation: unblurBackground 120s linear forwards; /* Animation de 120s */
+}
+/* --- Fin Pseudo-élément --- */
+
+/* Transition générale */
+body,
+.example h1,
+.example p,
+.example .button { /* .button peut être supprimé si non utilisé */
+  transition: all .2s ease-in-out;
+}
+
+/* --- Thème Clair (conservé - s'appliquera si vous ajoutez la classe 'light-theme' au body) --- */
+body.light-theme {
+  background-color: #151515; /* Fallback si image non chargée */
+}
+body.light-theme .example h1,
+body.light-theme .example p,
+body.light-theme .buttons p {
+  color: #FFFFFF; /* Ajustez si nécessaire pour le thème clair */
+}
+body.light-theme .buttons .button { /* .button peut être supprimé si non utilisé */
+  color: #FFFFFF;
+  border-color: #FFFFFF;
+}
+body.light-theme .buttons .button:hover { /* .button peut être supprimé si non utilisé */
+  color: #151515;
+  background-color: #FFFFFF;
+}
+/* --- Fin Thème Clair --- */
+
+/* --- Conteneur principal .example (appliqué à la colonne Bootstrap) --- */
+.example {
+  /* Typographie */
+  font-family: 'Permanent Marker', cursive; /* Police spécifique pour ce bloc */
+  text-align: center; /* Centre le texte à l'intérieur */
+
+  /* Layout & Box Model */
+  /* max-width et width sont gérés par les classes col-* de Bootstrap */
+  /* margin: auto; est géré par mx-auto de Bootstrap */
+  padding: 20px 40px; /* Espace intérieur conservé */
+  box-sizing: border-box;
+  border-radius: 8px; /* Coins arrondis conservés */
+
+  /* Apparence */
+  background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent pour lisibilité */
+
+  /* --- ESSENTIEL : Assurer que le contenu est NET et au-dessus du fond flou --- */
+   position: relative; /* Crée un contexte d'empilement */
+   z-index: 1;         /* Place cet élément (et ses enfants) AU-DESSUS de z-index: -1 */
+   /* --- FIN ESSENTIEL --- */
+}
+
+/* Styles pour les éléments DANS .example (qui resteront nets) */
+.example .flipdown {
+  margin: 20px auto; /* Centre le compteur et ajoute marge */
+}
+
+.example h1 {
+  font-weight: 100;
+  font-size: 3em;
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: inherit; /* Hérite la couleur (blanche par défaut) */
+}
+
+.example p {
+  font-family: 'Nunito Sans', sans-serif; /* Utilise la police du body pour le paragraphe */
+  font-weight: 400; /* Police normale */
+  margin-top: 0;
+  margin-bottom: 35px;
+  color: inherit; /* Hérite la couleur */
+}
+
+.example .buttons {
+  width: 100%;
+  margin: 50px auto 0px auto;
+  display: flex;
+  flex-direction: column; /* Empile verticalement par défaut */
+  align-items: center; /* Centre les éléments empilés */
+  justify-content: center;
+  gap: 15px; /* Espace entre les éléments */
+}
+
+/* Sur écrans plus larges, mettre côte à côte */
+@media (min-width: 576px) { /* sm breakpoint de Bootstrap */
+  .example .buttons {
+    flex-direction: row; /* Met côte à côte */
+    justify-content: space-around; /* Espace autour */
+  }
+}
+
+.example .buttons p {
+  font-family: 'Nunito Sans', sans-serif; /* Police standard */
+  font-weight: 400;
+  color: inherit;
+  margin: 0; /* Enlève les marges par défaut du paragraphe */
+  text-shadow: none; /* Enlever l'ombre si fond semi-transparent suffisant */
+}
+
+/* Style pour l'icône dans le bouton Bootstrap (si utilisé) */
+.example .btn i {
+  margin-right: 8px;
+}
+
+/* Styles spécifiques aux polices (conservés) */
+h1, h2, h3 {
+  font-family: 'Permanent Marker', cursive;
+}
+
+/* Thème Flipdown (si vous utilisez le thème sombre par défaut) */
+.flipdown.flipdown__theme-dark {
+  /* Vous pouvez personnaliser les couleurs/polices du thème ici si besoin */
+  font-family: 'Permanent Marker', cursive;  /* Décommentez pour changer la police du compteur */
+}
+
+/* --- Media Queries pour la responsivité (Ajustées pour Bootstrap) --- */
+/* La plupart des ajustements sont gérés par les classes col-* et flex de Bootstrap */
+/* Vous pouvez ajouter des ajustements spécifiques si nécessaire */
+@media(max-width: 575.98px) { /* xs breakpoint */
+  .example {
+    padding: 15px 20px; /* Réduire le padding sur très petit écran */
+  }
+
+  .example h1 {
+    font-size: 2.2em; /* Taille de titre réduite */
+  }
+
+  .example p {
+    margin-bottom: 25px;
+  }
+
+  .example .buttons {
+    margin-top: 25px;
+  }
+}
+
