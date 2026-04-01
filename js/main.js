@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Initialisation de FlipDown ---
 
   // 1. Définir la date/heure de fin du compte à rebours
-  //    Date cible : 17 Juillet 2025 à 00:00:00 UTC
-  var targetDate = new Date('2025-07-17T00:00:00Z'); // 'Z' indique UTC
+  //    Date cible : 17 Juillet 2026 à 00:00:00 UTC
+  var targetDate = new Date('2026-07-17T00:00:00Z'); // 'Z' indique UTC
   var futureTimestamp = targetDate.getTime() / 1000; // Convertit en timestamp UNIX (secondes)
 
   // L'ancienne méthode (3 jours à partir de maintenant) est supprimée/remplacée par celle ci-dessus.
